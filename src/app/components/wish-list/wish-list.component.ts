@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Wish} from '../../domain/wish';
+import {WishService} from '../../services/wish.service';
 
 @Component({
   selector: 'app-wish-list',
@@ -8,10 +9,25 @@ import {Wish} from '../../domain/wish';
 })
 export class WishListComponent implements OnInit {
   wishes: Wish[] = [];
-
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private wishService: WishService) {
   }
 
+  ngOnInit() {
+    this.wishService.getAll().subscribe(
+      data => {
+        this.wishes = data;
+      }, error => {
+        alert(error);
+      }
+    );
+  }
+
+  like(id: number): void {
+  }
+
+  dislike(id: number): void {
+  }
+
+  remove(id: number): void {
+  }
 }

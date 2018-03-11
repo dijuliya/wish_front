@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { WishListComponent } from './components/wish-list/wish-list.component';
+import { WishService } from './services/wish.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -14,9 +16,10 @@ import { WishListComponent } from './components/wish-list/wish-list.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [WishService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
